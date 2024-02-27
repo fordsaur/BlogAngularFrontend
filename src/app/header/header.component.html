@@ -1,0 +1,43 @@
+
+<nav class="navbar navbar-expand-md navbar-dark bg-blue">
+    <div class="container">
+      <a class="navbar-brand">
+        <img src="assets/images/logo.png"  routerLink="/" RouterLinkActive="active" alt="Angular Project" >
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" (click)="toggleNavbarCollapsing()" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" [class.collapse]="navbarCollapsed" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/" RouterLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="article" RouterLinkActive="active">Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="about-us" RouterLinkActive="active">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="contact-us" RouterLinkActive="active">Contact Us</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          @if(!isLoggedIn){
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+        }
+          @if(!isLoggedIn){
+          <li class="nav-item">
+            <a class="nav-link" href="register">  Register</a>
+          </li>
+        }
+      </ul>
+      @if(isLoggedIn){
+        <a class="text-light" style="text-decoration: none;" (click)="onLogout()">Logout</a>  
+      }
+      </div>
+    </div>
+  </nav>
+

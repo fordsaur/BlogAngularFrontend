@@ -1,0 +1,61 @@
+
+<section class="Singup-wrap mtb-40">
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+              <div class="login-box">
+                  <h1>User Login</h1>
+                  @if(status=='success' && datasaved){
+                    <div class="alert alert-success" >
+                        {{message}}
+                     </div>
+                  }
+                  @if(status=='error' && datasaved){
+                    <div class="alert alert-danger" >
+                        {{message}}
+                     </div>
+                  }
+                  <!-- <div *ngif="status=='success'; else errorStatus">
+                  <div class="alert alert-success" *ngif="datasaved">
+                     {{message}}
+                  </div>
+                </div>
+                  <ng-template #errorstatus="">
+                    <div class="alert alert-danger" *ngif="datasaved">
+                        {{message}}
+                     </div>
+                </ng-template> -->
+                
+                  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+                     
+                      <div class="form-group form-row">
+                          <label class="col-md-3">Email ID <span class="required">*</span></label>
+                          <div class="col-md-9">
+                            <input type="text" formControlName="Email" class="form-control" placeholder="Email Id" required="">
+                            @if(!loginForm.get('Email').valid && loginForm.get('Email').touched){
+                                <span [style.color]="'red'">Please enter Email !!!</span>
+                              }
+                          </div>
+                      </div>
+                      <div class="form-group form-row">
+                          <label class="col-md-3">Password <span class="required">*</span></label>
+                          <div class="col-md-9">
+                            <input type="password" formControlName="Password" class="form-control" placeholder="Password" required="">
+                            <!-- <span *ngif="!loginForm.get('Password').valid &amp;&amp; loginForm.get('Password').touched">Please enter Password !!!</span> -->
+                            @if(!loginForm.get('Password').valid && loginForm.get('Password').touched){
+                                <span [style.color]="'red'">>Please enter Password !!!</span>
+                              }
+                          </div>
+                      </div>
+                  
+                      <div class="form-group">
+                          <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Submit</button>
+                      </div>
+                  </form>
+              </div>         
+          </div>
+        </div>
+       
+    </div>
+  </section>
+
