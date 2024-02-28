@@ -23,16 +23,16 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-          @if(!isLoggedIn){
-          <li class="nav-item">
-            <a class="nav-link"  routerLink="login" RouterLinkActive="active">Login</a>
+         
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="nav-link" routerLink="login" RouterLinkActive="active">Login</a>
           </li>
-        }
-          @if(!isLoggedIn){
-          <li class="nav-item">
-            <a class="nav-link" routerLink="register" RouterLinkActive="active">  Register</a>
+        
+         
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="nav-link" routerLink="register" RouterLinkActive="active">Register</a>
           </li>
-        }
+        
       </ul>
       @if(isLoggedIn){
         <a class="text-light" style="text-decoration: none;" (click)="onLogout()">Logout</a>  
